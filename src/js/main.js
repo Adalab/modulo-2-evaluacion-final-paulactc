@@ -12,6 +12,8 @@ const btnReset = document.querySelector(".js-btnreset");
 
 const renderUl = document.querySelector(".js-list");
 
+const renderUlFavorites = document.querySelector(".js-listfavorites");
+
 //VARIABLE DE DATOS
 
 let allAnimes = [];
