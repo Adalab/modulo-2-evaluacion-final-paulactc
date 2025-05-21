@@ -17,6 +17,7 @@ const renderUlFavorites = document.querySelector(".js-listfavorites");
 //VARIABLE DE DATOS
 
 let allAnimes = [];
+let favorites = [];
 
 /* {
     mal_id: 20,
@@ -36,7 +37,34 @@ function handleclickselectanime(ev) {
   const clickEventCurrentLi = ev.currentTarget;
 
   clickEventCurrentLi.classList.toggle("favorites");
+
+  // Identificamos el objeto asociado al <li> en el que se ha hecho click.
+
+  const idGancho = clickEventCurrentLi.dataset.gancho;
+
+  // guardamos el array  clickeado en la variable clickedAnimesObject
+
+  const clickedAnimesObject = allAnimes.find(
+    (oneAnimeLi) => oneAnimeLi.mal_id === parseInt(idGancho)
+  );
+  console.log(clickedAnimesObject);
+
+  //Busco si esta en favoritos o no el anime
+
+  const animePositionFavorites = favorites.findIndex(
+    (oneAnimeLi) => oneAnimeLi.mal_id === parseInt(idGancho)
+  );
+
+  //Si al clickear aún no esta en favoritos lo añado
+  if (animePositionFavorites === -1) {
+    //guardo en favorites los arrays que ha clickeado el usuario
+    favorites.push(clickedAnimesObject);
+    //lo pinto en html
+    renderUlFavorites.innerHTML += `<li class="js-animelistli animelistli" data-gancho="${clickedAnimesObject.mal_id}"><img class="img" src="${clickedAnimesObject.images.jpg.image_url}"> <h3>${clickedAnimesObject.title}</h3></li>`;
+  }
+  console.log(animePositionFavorites);
 }
+
 /*
 function renderOneAnimeUl() {
   renderUl.innerHTML = `<li>${infoOneAnime[0].title}</li>
@@ -56,7 +84,7 @@ const handleclickbtnfilter = (ev) => {
     .then((data) => {
       renderUl.innerHTML = "";
       for (const animeTitle of data.data) {
-        renderUl.innerHTML += `<li><img src="${animeTitle.images.jpg.image_url}"></li> <li>${animeTitle.title}</li>`;
+        renderUl.innerHTML += `<li><img src="${animeTitle.images.jpg.image_url}" data-gancho="id"></li> <li>${animeTitle.title}</li>`;
       }
     });
 };
@@ -70,8 +98,9 @@ btnSearch.addEventListener("click", handleclickbtnfilter);
 fetch("https://api.jikan.moe/v4/anime?q=naruto")
   .then((res) => res.json())
   .then((data) => {
+    allAnimes = data.data;
     for (const animeTitle of data.data) {
-      renderUl.innerHTML += `<li class="js-animelistli animelistli"><img class="img" src="${animeTitle.images.jpg.image_url}"> <h3>${animeTitle.title}</h3></li>`;
+      renderUl.innerHTML += `<li class="js-animelistli animelistli" data-gancho="${animeTitle.mal_id}"><img class="img" src="${animeTitle.images.jpg.image_url}"> <h3>${animeTitle.title}</h3></li>`;
     }
     const allAnimeLi = document.querySelectorAll(".js-animelistli");
 
