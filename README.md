@@ -1,26 +1,23 @@
-# ViveMatch
+# 🎌 Aplicación Web de Búsqueda de Animes
 
-## 🚀 Features
-
-- Fill out a form with personal and lifestyle details
-- Live preview of the profile card
-- Downloadable and shareable card
-- Responsive and visually friendly design
+Este es un proyecto desarrollado por **Paula Castillo** como parte de la evaluación final del Módulo 2. Se trata de una aplicación web que permite buscar series de anime mediante un buscador y seleccionar tus favoritas, que se mostrarán en una lista aparte para fácil acceso.
 
 ## 🛠️ Technologies Used
 
-- HTML
-- SCSS
-- JavaScript
+- ⚡ [Vite](https://vitejs.dev/)
+- 🧠 JavaScript (Vanilla)
+- 🌐 HTML5
+- 🎨 CSS3
+- 📡 [Jikan API](https://jikan.moe/) (para obtener los datos de los animes)
 
-## 💻 Usage
+## ✨ Funcionalidades
 
-1. Open your browser and go to `http://localhost:3000`
-2. Complete the form with your personal data and preferences
-3. Watch your card update in real time
-4. Download or share your card for use on the dating platform
+- 🔍 **Buscar animes**: Introduce el nombre de un anime y obtén resultados usando la API de Jikan (MyAnimeList).
+- ❤️ **Favoritos**: Haz clic sobre una serie para marcarla como favorita.
+- 📋 **Listado de favoritos**: Las series favoritas se muestran en una lista separada para que puedas verlas cuando quieras.
+- ⚡ **Interfaz simple y rápida** gracias a Vite.
 
-## 👥 Collaborators
+### 👥 Collaborators
 
 - [@paulactc](https://github.com/paulactc)
 
